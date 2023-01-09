@@ -30,7 +30,9 @@ public class CategoryControllers {
 		if(allEntry.size()==0) {
 			throw new EntryExceptions("Error connecting with API!");
 		}else {
-			List<CustomEntryDTO> categorywiseResponse = allEntry.stream().filter(e -> e.getCategory().equals(category)).map(e -> new CustomEntryDTO(e.getApi(), e.getDescription())).toList();
+			List<CustomEntryDTO> categorywiseResponse = allEntry.stream()
+					.filter(e -> e.getCategory().equals(category))
+					.map(e -> new CustomEntryDTO(e.getApi(), e.getDescription())).toList();
 		
 			if(categorywiseResponse.size()==0) {
 				throw new EntryExceptions("Check the category entered..!");
