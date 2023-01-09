@@ -23,7 +23,6 @@ public class CategoryControllers {
 	
 	@GetMapping("/entries/{category}")
 	public List<CustomEntryDTO> getEntriesByCategory(@PathVariable("category") String category) throws EntryExceptions{
-		APIResponse apiResponse = restTemplate.getForObject("https://api.publicapis.org/entries",APIResponse.class);
 		
 		APIResponse apiResp = restTemplate.getForObject("https://api.publicapis.org/entries", APIResponse.class);
 		List<Entry> allEntry = apiResp.getEntries();
@@ -40,6 +39,5 @@ public class CategoryControllers {
 			}
 		}
 	}
-	
 	
 }
