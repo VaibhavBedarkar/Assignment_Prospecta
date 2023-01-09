@@ -2,21 +2,28 @@ package com.prospecta.model;
 
 import org.springframework.data.web.JsonPath;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Entry {
 
-	
-	private String title;
+	@JsonProperty("API")
+	private String api;
+	@JsonProperty("Description")
 	private String description;
+	@JsonProperty("Auth")
 	private String auth;
+	@JsonProperty("HTTPS")
 	private boolean https;
+	@JsonProperty("Cors")
 	private String cors;
+	@JsonProperty("Link")
 	private String category;
 	
-	public String getTitle() {
-		return title;
+	public String getApi() {
+		return api;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setApi(String api) {
+		this.api = api;
 	}
 	public String getDescription() {
 		return description;
