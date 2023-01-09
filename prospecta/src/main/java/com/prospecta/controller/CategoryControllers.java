@@ -18,19 +18,18 @@ import com.prospecta.model.Entry;
 public class CategoryControllers {
 
 	@Autowired
-	private RestTemplate restTemplate;
+	RestTemplate restTemplate;
 	
-	@GetMapping("entries/{category}")
+	@GetMapping("/entries/{category}")
 	public List<CustomEntryDTO> getEntriesByCategory(@PathVariable("category") String category){
 		APIResponse apiResponse = restTemplate.getForObject("https://api.publicapis.org/entries",APIResponse.class);
 		
-		List<Entry> allResponses = apiResponse.getEntries();
-		
-		List<CustomEntryDTO> categorywiseResponse = allResponses.stream()
-				.filter(entry -> entry.getCategory().equals(category))
-				.map(entry -> new CustomEntryDTO(entry.getApi(),entry.getDescription()))
-				.toList();
+		APIResponse apiResp = restTemplate.getForObject("https://api.publicapis.org/entries", APIResponse.class);
+		List<Entry> allEntry = apiResp.getEntries();
+		List<CustomEntryDTO> categorywiseResponse = allEntry.stream().filter(e -> e.getCategory().equals(category)).map(e -> new CustomEntryDTO(e.getApi(), e.getDescription())).toList();
 		
 		return categorywiseResponse;
 	}
+	
+	
 }

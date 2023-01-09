@@ -12,11 +12,11 @@ public class Entry {
 	private String description;
 	@JsonProperty("Auth")
 	private String auth;
-	@JsonProperty("HTTPS")
+	@JsonProperty("Https")
 	private boolean https;
 	@JsonProperty("Cors")
 	private String cors;
-	@JsonProperty("Link")
+	@JsonProperty("Category")
 	private String category;
 	
 	public String getApi() {
@@ -55,6 +55,17 @@ public class Entry {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	public Entry(String api, String description, String auth, boolean https, String cors, String category) {
+		super();
+		this.api = api;
+		this.description = description;
+		this.auth = auth;
+		this.https = https;
+		this.cors = cors;
+		this.category = category;
+	}
 	
-	
+	public Entry() {
+		// TODO Auto-generated constructor stub
+	}
 } 
